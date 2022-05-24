@@ -11,6 +11,11 @@ export default function TodoFooter(props) {
     );
   }
 
+  function changeShow(event, value) {
+    event.preventDefault();
+    props.onChnageShowing(value);
+  }
+
   return (
     <footer className="footer">
       <span className="todo-count">
@@ -20,6 +25,7 @@ export default function TodoFooter(props) {
         <li>
           <a
             className={props.nowShowing === ALL_TODOS ? "selected" : ""}
+            onClick={(event) => changeShow(event, ALL_TODOS)}
             href="#/"
           >
             All
@@ -28,7 +34,8 @@ export default function TodoFooter(props) {
         <li>
           <a
             className={props.nowShowing === ACTIVE_TODOS ? "selected" : ""}
-            href="#/active"
+            onClick={(event) => changeShow(event, ACTIVE_TODOS)}
+            href="#/"
           >
             Active
           </a>
@@ -36,7 +43,8 @@ export default function TodoFooter(props) {
         <li>
           <a
             className={props.nowShowing === COMPLETED_TODOS ? "selected" : ""}
-            href="#/completed"
+            onClick={(event) => changeShow(event, COMPLETED_TODOS)}
+            href="#/"
           >
             Completed
           </a>

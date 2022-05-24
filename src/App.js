@@ -21,6 +21,11 @@ export default function App(props) {
       setTodos(JSON.parse(todoData));
     }
   }, []);
+
+  function changeShowing(value) {
+    setNowShowing(value);
+  }
+
   function toggleAllCheckBox(event) {
     var checked = event.target.checked;
     var array = [...todos];
@@ -124,6 +129,7 @@ export default function App(props) {
         count={activeTodoCount}
         completedCount={completedCount}
         nowShowing={nowShowing}
+        onChnageShowing={(value) => changeShowing(value)}
         onClearCompleted={() => clearCompleted()}
       />
     );
